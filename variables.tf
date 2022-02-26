@@ -6,6 +6,6 @@ variable "compartment_id" {
   type = string
 }
 
-variable "availability_domain" {
-  type = string
+variable "availability_domains" {
+  type = list(string)
 }

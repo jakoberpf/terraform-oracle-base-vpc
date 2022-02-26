@@ -1,5 +1,5 @@
 resource "oci_core_subnet" "private" {
-  availability_domain        = var.availability_domain
+  availability_domain        = var.availability_domains[0]
   cidr_block                 = "192.168.71.0/24"
   display_name               = "${var.name}-private-subnet-${random_string.deployment_id.result}"
   prohibit_public_ip_on_vnic = true
@@ -14,7 +14,7 @@ resource "oci_core_subnet" "private" {
 }
 
 resource "oci_core_subnet" "public" {
-  availability_domain        = var.availability_domain
+  availability_domain        = var.availability_domains[0]
   cidr_block                 = "192.168.81.0/24"
   display_name               = "${var.name}-public-subnet-${random_string.deployment_id.result}"
   prohibit_public_ip_on_vnic = false
