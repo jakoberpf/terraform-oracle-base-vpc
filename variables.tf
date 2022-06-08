@@ -9,3 +9,22 @@ variable "compartment_id" {
 variable "availability_domains" {
   type = list(string)
 }
+
+variable "vcn_cidr_block" {
+  type = string
+  default = "10.0.0.0/16"
+}
+
+variable "local_peering_root_compartment_ocid" {
+  type    = string
+  default = ""
+}
+
+variable "local_peering" {
+  type    = list(object({
+    acceptor_tenancy_ocid = string
+    requestor_tenancy_ocid = string
+    requestor_group_ocid = string
+  }))
+  default = []
+}
