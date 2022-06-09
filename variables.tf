@@ -15,6 +15,11 @@ variable "vcn_cidr_block" {
   default = "10.0.0.0/16"
 }
 
+variable "local_peering_id" {
+  type    = string
+  default = ""
+}
+
 variable "local_peering_root_compartment_ocid" {
   type    = string
   default = ""

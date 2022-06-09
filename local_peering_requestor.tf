@@ -2,8 +2,8 @@ resource "oci_core_local_peering_gateway" "requestor" {
   for_each       = toset(var.local_peering_requestors)
   compartment_id = var.compartment_id
   vcn_id         = oci_core_vcn.this.id
-  display_name   = "requstor-${each.value}-${random_string.deployment_id.result}"
-  # peer_id        = "ocid1.localpeeringgateway.oc1.eu-frankfurt-1.aaaaaaaa7xsiasnzcoefb5hns5cy55npnhvqymdd5go4rnrdopvbewd6jq7a" # oci_core_local_peering_gateway.acceptor.id
+  display_name   = "requestor-${each.value}-${random_string.deployment_id.result}"
+  # peer_id        = lookup(lookup(var.local_peering_requestor_data, "${each.value}", null).acceptor_peer_ocids, "${var.local_peering_id}", null).id
   depends_on = [
     oci_identity_policy.requestor_policy
   ]
