@@ -20,21 +20,31 @@ variable "local_peering_root_compartment_ocid" {
   default = ""
 }
 
-variable "local_peering_acceptor" {
-  type    =  list(object({
-    id = string
+variable "local_peering_requestors" {
+  type    = list(string)
+  default = []
+}
+
+variable "local_peering_requestor_data" {
+  type    =  map(object({
+    acceptor_tenancy_ocid = string
+    acceptor_cidr = string
+  }))
+  default = {}
+}
+
+variable "local_peering_acceptors" {
+  type    = list(string)
+  default = []
+}
+
+variable "local_peering_acceptor_data" {
+  type    =  map(object({
     requestor_tenancy_ocid = string
     requestor_group_ocid = string
     requestor_cidr = string
   }))
-  default = []
+  default = {}
 }
 
-variable "local_peering_requestor" {
-  type    =  list(object({
-    id = string
-    acceptor_tenancy_ocid = string
-    acceptor_cidr = string
-  }))
-  default = []
-}
+

@@ -13,3 +13,12 @@ resource "random_string" "deployment_id" {
   numeric = true
   special = false
 }
+
+data "oci_identity_compartment" "this" {
+    id = var.compartment_id
+}
+
+data "oci_identity_groups" "administrators" {
+    compartment_id = var.local_peering_root_compartment_ocid
+    name = "Administrators"
+}
