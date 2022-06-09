@@ -20,11 +20,21 @@ variable "local_peering_root_compartment_ocid" {
   default = ""
 }
 
-variable "local_peering" {
-  type    = list(object({
-    acceptor_tenancy_ocid = string
+variable "local_peering_acceptor" {
+  type    =  list(object({
+    id = string
     requestor_tenancy_ocid = string
     requestor_group_ocid = string
+    requestor_cidr = string
+  }))
+  default = []
+}
+
+variable "local_peering_requestor" {
+  type    =  list(object({
+    id = string
+    acceptor_tenancy_ocid = string
+    acceptor_cidr = string
   }))
   default = []
 }
